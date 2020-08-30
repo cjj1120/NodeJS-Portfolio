@@ -12,6 +12,8 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
+app.use(express.static('Public'))
+
 app.get('/portfolio', (req, res) => {
   res.render('portfolio')
 })
