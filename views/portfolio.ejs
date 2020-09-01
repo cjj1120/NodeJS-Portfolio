@@ -8,16 +8,51 @@
     
     <%- include('partials/nav') %>
   <!-- Page Content -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <h1 class="mt-5">Here is my portfolio</h1>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae nulla reiciendis similique, molestias, fugit architecto vero, totam corporis rem quod rerum quos quisquam officia voluptas aliquid ratione saepe minima delectus?</p>
+  <section class="section-half d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h1 class="display-2"><strong>Here is my portfolio <br /> it’s what you do.</strong></h1>
+    </div>
+</section>
+
+<!-- Below is card container -->
+<!-- <div class="card" style="width: 80rem;">
+  <div class="card-header">
+    Quote
+  </div>
+  <div class="card-body ">
+    This is within a card body 
+  </div>
+</div>
+</section>
+<div class="card">
+  <div class="card-header">
+    Quote
+  </div> -->
+
+<!-- Image card -->
+<!-- //Below line can adjust the GRID and center everything cool! -->
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="card-group">
+      <% for(var x = 0; x < projects.length; x++) { %>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%- projects[x].logo %> " alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%- projects[x].title %></h5>
+          <p class="card-text"><%- projects[x].description %></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%- projects[x].way %></li>
+            <li class="list-group-item"><%- projects[x].category %></li>
+          </ul>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
+      <% } %>
     </div>
-  </section>
+  </div>
+</div>
+
+
 
   <%- include('partials/scripts') %>
   </body>

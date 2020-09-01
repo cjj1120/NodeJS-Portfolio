@@ -1,0 +1,15 @@
+this is under portfolio 
+
+<!-- //Before making thins complicated (like above)
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%- logo %> " alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%- title %></h5>
+    <p class="card-text"><%- description %></p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%- way %></li>
+      <li class="list-group-item"><%- category %></li>
+    </ul>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> -->
