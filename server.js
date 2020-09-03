@@ -1,9 +1,18 @@
 const express = require('express')
+const session = require('express-session');
 const app = express()
 const port = process.env.PORT || 3000
 
 app.set('view engine', 'ejs');
+app.use(express.static('./public'));
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
 
+
+//routing
 app.get('/', (req, res) => {
   res.render('home')
 })
@@ -12,15 +21,37 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
-app.use(express.static('Public'))
-
 app.get('/portfolio', (req, res) => {
-  res.render('portfolio', {projects: projectList})
+  res.render('portfolio', {
+    projects: projectList
+    
+  })
 })
 
 app.get('/about', (req, res) => {
   res.render('about')
 })
+
+//Admin
+app.get('/admin/login', (req, res) => {
+  res.render('admin/login')
+})  
+
+//temporary
+app.get('/admin/user/logged-in', (req, res) => {
+  req.session.isLoggedIn = true
+  res.redirect('/') 
+})  
+ 
+app.get('/admin/user/logged-out', (req, res) => {
+  req.session.isLoggedOut = false
+  res.redirect('/')
+})  
+
+
+
+
+
 
 const projectList = [
   {
@@ -28,7 +59,7 @@ const projectList = [
     title: 'Priority of life',
     description: 'Having a work life balance is the upmost important',
     way: 'Time management and Good habit',
-    category: 'lifestyle'
+    category: 'Lifestyle'
 
   },
   {
@@ -36,7 +67,7 @@ const projectList = [
     title: 'Second priority',
     description: 'Having exercise everyday is important for both the mental and physical',
     way: 'Hiking and Workout',
-    category: 'lifestyle'
+    category: 'Health'
 
   },
   {
@@ -44,7 +75,7 @@ const projectList = [
     title: 'Third priority',
     description: 'Self reflection and self awareness is important for growth',
     way: 'Journalizing and Introspection',
-    category: 'lifestyle'
+    category: 'Psych'
 
   }
 ]

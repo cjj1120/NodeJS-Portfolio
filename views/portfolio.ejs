@@ -5,14 +5,24 @@
     <title>Portfolio</title>
   </head>
   <body>
-    
+    <div class="container">
+
+    <!-- Page Content -->
+
+     
     <%- include('partials/nav') %>
-  <!-- Page Content -->
-  <section class="section-half d-flex align-items-center justify-content-center">
-    <div class="text-center">
-        <h1 class="display-2"><strong>Here is my portfolio <br /> it’s what you do.</strong></h1>
+      <section class="section-half d-flex align-items-center justify-content-center">
+      
+        <div class="text-center ">
+            <h1 class="display-2"><strong>Here is my portfolio <br /> it’s what you do.</strong></h1>
+        </div>
+    </section>
+    <div class='d-flex justify-content-end mt-2 mb-5 '>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"> New Project </button>
     </div>
-</section>
+</div>
+
+
 
 <!-- Below is card container -->
 <!-- <div class="card" style="width: 80rem;">
@@ -31,8 +41,8 @@
 
 <!-- Image card -->
 <!-- //Below line can adjust the GRID and center everything cool! -->
+<section>
 <div class="container d-flex align-items-center justify-content-center">
-  <div class="row">
     <div class="card-group">
       <% for(var x = 0; x < projects.length; x++) { %>
       <div class="card" style="width: 18rem;">
@@ -43,15 +53,73 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><%- projects[x].way %></li>
             <li class="list-group-item"><%- projects[x].category %></li>
+            <li class="list-group-item">
+              <button type ="button" class="btn btn-outline-danger btn-sm">Delete</button>
+              <button type ="button" class="btn btn-outline-info btn-sm">Edit</button>
           </ul>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
       <% } %>
     </div>
+</div>
+<%- include('partials/footer') %>
+</section>
+
+
+<!-- Modal for BUTTON -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label>Image URL</label>
+            <input type="email" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="email" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" cols="30" rows="10"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Way</label>
+            <select multiple class="form-control" >
+              <option>Time management</option>
+              <option>Good habit</option>
+              <option>Hiking</option>
+              <option>Workout</option>
+              <option>Journalizing/option>
+              <option>Introspection </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" >
+              <option>Lifestyle</option>
+              <option>Health</option>
+              <option>Psych</option>
+
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
-
 
 
   <%- include('partials/scripts') %>
